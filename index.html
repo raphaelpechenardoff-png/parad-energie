@@ -1,1 +1,881 @@
 
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARAD — L'Énergie de Skullaris</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            900: '#115e59',
+                            dark: '#030712',
+                            card: '#0b0f19'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom Style for subtle energy flows -->
+    <style>
+        .glow-cyan {
+            box-shadow: 0 0 15px rgba(20, 184, 166, 0.4);
+        }
+        .glow-blue {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-100 font-sans antialiased grid-bg">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <!-- Glowing Logo -->
+                <div class="relative flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500 to-blue-600 glow-cyan">
+                    <span class="text-white font-extrabold text-xl tracking-wider">P</span>
+                    <span class="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping"></span>
+                </div>
+                <div>
+                    <span class="text-2xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">PARAD</span>
+                    <p class="text-[9px] text-slate-400 uppercase tracking-widest leading-none">Réseau National de Skullaris</p>
+                </div>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#dashboard" class="hover:text-brand-500 transition-colors flex items-center gap-1.5">
+                    <i data-lucide="activity" class="w-4 h-4"></i> Tableau de bord
+                </a>
+                <a href="#map" class="hover:text-brand-500 transition-colors flex items-center gap-1.5">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i> Nos Infrastructures
+                </a>
+                <a href="#eco" class="hover:text-brand-500 transition-colors flex items-center gap-1.5">
+                    <i data-lucide="leaf" class="w-4 h-4"></i> Engagements
+                </a>
+                <a href="#assistant" class="hover:text-brand-500 transition-colors flex items-center gap-1.5">
+                    <i data-lucide="message-square-code" class="w-4 h-4"></i> Assistant Citoyen
+                </a>
+            </nav>
+
+            <!-- Grid Status Indicator -->
+            <div class="flex items-center gap-3 bg-slate-900/80 px-4 py-2 rounded-full border border-slate-800">
+                <span class="relative flex h-2.5 w-2.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                </span>
+                <span class="text-xs text-slate-300 font-semibold uppercase tracking-wider">Réseau Stable • 50.1 Hz</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-20 pb-32 border-b border-slate-900">
+        <!-- Ambient decorative lights -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Opérateur National Énergétique
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-none">
+                        Éclairer chaque foyer, <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-emerald-400 to-blue-500">
+                            Propulser Skullaris.
+                        </span>
+                    </h1>
+                    <p class="text-lg text-slate-300 leading-relaxed max-w-2xl">
+                        PARAD produit et achemine l'électricité sur l'ensemble de notre territoire national. De la force hydroélectrique de l'extrême Nord aux vents technologiques de l'Est, nous bâtissons l'indépendance énergétique et industrielle de Skullaris.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#map" class="px-6 py-3.5 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-600 text-white rounded-xl font-bold transition-all transform hover:-translate-y-0.5 glow-cyan flex items-center gap-2">
+                            Explorer les infrastructures <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#assistant" class="px-6 py-3.5 bg-slate-900 border border-slate-800 hover:bg-slate-800/80 text-slate-200 rounded-xl font-semibold transition-all flex items-center gap-2">
+                            Contacter le support citoyen <i data-lucide="bot" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                    <!-- Quick Numbers -->
+                    <div class="grid grid-cols-3 gap-6 pt-8 border-t border-slate-800/60">
+                        <div>
+                            <span class="block text-3xl font-extrabold text-white">4.8 GW</span>
+                            <span class="text-xs text-slate-400">Capacité Totale</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-extrabold text-brand-400">92%</span>
+                            <span class="text-xs text-slate-400">Énergies Décarbonées</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-extrabold text-blue-400">1.2M</span>
+                            <span class="text-xs text-slate-400">Foyers Skullariens raccordés</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic (Interactive Simulated Power Flow) -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative bg-brand-card border border-slate-800 rounded-3xl p-8 glow-blue">
+                        <div class="absolute -top-3 -right-3 w-6 h-6 bg-blue-500 rounded-full animate-ping opacity-25"></div>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs font-bold tracking-widest uppercase text-blue-400">Statut du Réseau Principal</span>
+                            <span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded text-[10px] font-mono">LIVE FEED</span>
+                        </div>
+
+                        <!-- Pulse wave simulation inside box -->
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between text-xs text-slate-400 mb-2">
+                                    <span>Production du Pays (Skullaris)</span>
+                                    <span class="font-mono text-white" id="production-val">3,450 MW</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-brand-500 to-blue-500 h-2.5 rounded-full transition-all duration-1000" id="production-bar" style="width: 72%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs text-slate-400 mb-2">
+                                    <span>Consommation Nationale</span>
+                                    <span class="font-mono text-white" id="consommation-val">3,120 MW</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-teal-500 to-yellow-500 h-2.5 rounded-full transition-all duration-1000" id="consommation-bar" style="width: 65%"></div>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-slate-800 pt-4 flex justify-between items-center text-xs text-slate-400">
+                                <div class="flex items-center gap-1.5">
+                                    <i data-lucide="wind" class="w-4 h-4 text-brand-400 animate-spin-slow"></i>
+                                    <span>Éolien Est: <b class="text-white font-mono" id="eolien-stat">1,250 MW</b></span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <i data-lucide="waves" class="w-4 h-4 text-blue-400"></i>
+                                    <span>Hydro Nord (Brain Island): <b class="text-white font-mono" id="hydro-stat">2,200 MW</b></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE GRID DASHBOARD -->
+    <section id="dashboard" class="py-24 bg-slate-950/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold text-white">Monitoring Temps Réel du Réseau National</h2>
+                <p class="text-slate-400 mt-3">
+                    Les équipes de PARAD supervisent la grille électrique de Skullaris 24h/24. Suivez en temps réel la répartition de notre production.
+                </p>
+            </div>
+
+            <!-- Live Indicators grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1: Wind Farms (Est) -->
+                <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-800/80 hover:border-brand-500/40 transition-all flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-brand-500/10 text-brand-400 rounded-xl">
+                            <i data-lucide="wind" class="w-6 h-6 animate-pulse-slow"></i>
+                        </div>
+                        <span class="text-xs font-mono px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded">Actif</span>
+                    </div>
+                    <div>
+                        <span class="text-sm text-slate-400">Éolien Est (WindTech)</span>
+                        <h3 class="text-2xl font-bold text-white mt-1" id="dash-wind-val">1,234 MW</h3>
+                        <p class="text-xs text-brand-400 mt-2 flex items-center gap-1">
+                            <i data-lucide="trending-up" class="w-3.5 h-3.5"></i> Rendement optimal (Côte Est)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Hydroelectric (Brain Island) -->
+                <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-800/80 hover:border-blue-500/40 transition-all flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-blue-500/10 text-blue-400 rounded-xl">
+                            <i data-lucide="droplet" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs font-mono px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded">Actif</span>
+                    </div>
+                    <div>
+                        <span class="text-sm text-slate-400">Hydraulique Sud - Brain Island</span>
+                        <h3 class="text-2xl font-bold text-white mt-1" id="dash-hydro-val">2,180 MW</h3>
+                        <p class="text-xs text-blue-400 mt-2 flex items-center gap-1">
+                            <i data-lucide="activity" class="w-3.5 h-3.5"></i> Turbines à pleine capacité
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Grid Frequency -->
+                <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-800/80 hover:border-purple-500/40 transition-all flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-purple-500/10 text-purple-400 rounded-xl">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs font-mono px-2 py-1 bg-purple-500/10 text-purple-400 rounded">Synchrone</span>
+                    </div>
+                    <div>
+                        <span class="text-sm text-slate-400">Fréquence Système</span>
+                        <h3 class="text-2xl font-bold text-white mt-1" id="dash-freq-val">50.12 Hz</h3>
+                        <p class="text-xs text-purple-400 mt-2 flex items-center gap-1">
+                            <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> Tolérance nominale de Skullaris
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Co2 Footprint -->
+                <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-800/80 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-xl">
+                            <i data-lucide="leaf" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs font-mono px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded">Idéal</span>
+                    </div>
+                    <div>
+                        <span class="text-sm text-slate-400">Émissions Carbone</span>
+                        <h3 class="text-2xl font-bold text-white mt-1">12 g/kWh</h3>
+                        <p class="text-xs text-emerald-400 mt-2 flex items-center gap-1">
+                            <i data-lucide="shield" class="w-3.5 h-3.5"></i> Score environnemental A+
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GEOGRAPHICAL INFRASTRUCTURES: INTERACTIVE MAP -->
+    <section id="map" class="py-24 border-t border-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Map Sidebar Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold rounded-full uppercase tracking-wider">
+                        <i data-lucide="map" class="w-3 h-3"></i> Déploiement Géographique
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                        Une présence stratégique à travers Skullaris
+                    </h2>
+                    <p class="text-slate-300">
+                        La production d'énergie de Skullaris repose sur des atouts naturels exploités par les technologies brevetées de PARAD. Cliquez sur un point de notre carte interactive pour inspecter l'installation.
+                    </p>
+
+                    <!-- Info Box showing active/selected location -->
+                    <div id="map-info-box" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all duration-300">
+                        <!-- Default state -->
+                        <div id="default-info">
+                            <div class="flex items-center gap-3 text-brand-400 mb-3">
+                                <i data-lucide="mouse-pointer" class="w-5 h-5 animate-bounce"></i>
+                                <span class="font-bold text-sm">Survolez ou cliquez sur les zones lumineuses de la carte</span>
+                            </div>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Découvrez nos centres névralgiques : des barrages titanesques sur l'Île de Brain Island aux vastes éoliennes de l'Est en passant par notre siège social dans la capitale de Paradis.
+                            </p>
+                        </div>
+                        
+                        <!-- Dynamic State -->
+                        <div id="dynamic-info" class="hidden space-y-4">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-bold text-white" id="info-title">Nom de l'installation</h3>
+                                <span class="text-[10px] uppercase font-mono px-2 py-0.5 bg-brand-500/20 text-brand-400 rounded-md" id="info-tag">Catégorie</span>
+                            </div>
+                            <p class="text-sm text-slate-300" id="info-desc">Description détaillée...</p>
+                            <div class="grid grid-cols-2 gap-4 pt-3 border-t border-slate-800">
+                                <div>
+                                    <span class="text-xs text-slate-500 block uppercase tracking-wider">Capacité installée</span>
+                                    <span class="text-base font-bold text-white font-mono" id="info-cap">0 MW</span>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-slate-500 block uppercase tracking-wider">Localisation</span>
+                                    <span class="text-base font-semibold text-slate-200" id="info-loc">Zone</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive SVG Map / Schematic of Skullaris -->
+                <div class="lg:col-span-7 flex justify-center">
+                    <div class="relative bg-brand-card/60 p-8 rounded-3xl border border-slate-800 w-full max-w-2xl">
+                        <!-- Custom designed abstract map representing Skullaris -->
+                        <svg viewBox="0 0 800 600" class="w-full h-auto drop-shadow-2xl" id="skullaris-map">
+                            <!-- Background ocean lines -->
+                            <path d="M 50,150 Q 200,100 400,150 T 750,150" fill="none" stroke="rgba(59, 130, 246, 0.05)" stroke-width="2"/>
+                            <path d="M 50,450 Q 200,400 400,450 T 750,450" fill="none" stroke="rgba(59, 130, 246, 0.05)" stroke-width="2"/>
+
+                            <!-- Skullaris Islands Outline -->
+                            <!-- Brain Island (Far North) -->
+                            <path d="M 300,50 C 350,30 450,30 500,50 C 550,70 520,130 460,140 C 400,150 320,130 300,90 Z" 
+                                  fill="#111827" stroke="#1e293b" stroke-width="3" class="hover:fill-slate-800/80 cursor-pointer transition-colors" />
+                            <text x="400" y="80" fill="#94a3b8" font-size="11" font-weight="bold" letter-spacing="1.5" text-anchor="middle">BRAIN ISLAND (Extrême Nord)</text>
+
+                            <!-- Southern Waters label -->
+                            <text x="400" y="190" fill="#334155" font-size="10" font-style="italic" text-anchor="middle">Canal du Paradis</text>
+
+                            <!-- Mainland Skullaris (Below Brain Island) -->
+                            <path d="M 150,280 C 250,220 400,230 550,220 C 680,210 750,280 730,400 C 710,520 580,550 450,560 C 320,570 180,520 140,420 C 110,350 100,310 150,280 Z" 
+                                  fill="#0f172a" stroke="#1e293b" stroke-width="3" class="hover:fill-slate-800/80 cursor-pointer transition-colors" />
+                            <text x="350" y="380" fill="#475569" font-size="18" font-weight="extrabold" letter-spacing="4" text-anchor="middle">SKULLARIS</text>
+
+                            <!-- Map Interactivity Hotspots -->
+                            
+                            <!-- 1. Brain Island Dams (South of Brain Island, far North) -->
+                            <g class="cursor-pointer group" onclick="showMapDetail('brain-island')" onmouseenter="previewMapDetail('brain-island')">
+                                <circle cx="430" cy="120" r="25" fill="rgba(59, 130, 246, 0.15)" class="animate-pulse-slow"/>
+                                <circle cx="430" cy="120" r="10" fill="#3b82f6" class="group-hover:scale-125 transition-transform"/>
+                                <circle cx="430" cy="120" r="4" fill="#ffffff" />
+                                <text x="430" y="150" fill="#60a5fa" font-size="11" font-weight="bold" text-anchor="middle">Barrage de Brain Island</text>
+                            </g>
+
+                            <!-- 2. Headquarters Paradis (Capital, Northeast of the mainland) -->
+                            <g class="cursor-pointer group" onclick="showMapDetail('hq')" onmouseenter="previewMapDetail('hq')">
+                                <circle cx="620" cy="250" r="25" fill="rgba(234, 179, 8, 0.15)" class="animate-pulse-slow"/>
+                                <rect x="612" y="242" width="16" height="16" fill="#eab308" rx="3" class="group-hover:scale-115 transition-transform" />
+                                <polygon points="616,254 620,246 624,254" fill="#030712" />
+                                <text x="620" y="280" fill="#facc15" font-size="11" font-weight="bold" text-anchor="middle">Paradis (Capitale / Siège)</text>
+                            </g>
+
+                            <!-- 3. Wind Parks (East of the country) -->
+                            <g class="cursor-pointer group" onclick="showMapDetail('wind-east')" onmouseenter="previewMapDetail('wind-east')">
+                                <circle cx="680" cy="420" r="30" fill="rgba(20, 184, 166, 0.15)" class="animate-pulse-slow"/>
+                                <circle cx="680" cy="420" r="10" fill="#14b8a6" class="group-hover:scale-125 transition-transform"/>
+                                <!-- Wind Blade visual icon -->
+                                <line x1="680" y1="410" x2="680" y2="430" stroke="#ffffff" stroke-width="2" class="animate-spin-slow origin-center"/>
+                                <text x="680" y="465" fill="#2dd4bf" font-size="11" font-weight="bold" text-anchor="middle">Parc Éolien Est</text>
+                            </g>
+                        </svg>
+
+                        <!-- Legend -->
+                        <div class="absolute bottom-4 left-4 bg-slate-900/90 border border-slate-800 p-3 rounded-xl flex flex-col gap-1.5 text-xs">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
+                                <span class="text-slate-300">Complexe Hydroélectrique (Nord)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 bg-teal-500 rounded-full"></span>
+                                <span class="text-slate-300">Centrale Éolienne Haute Technologie (Est)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                                <span class="text-slate-300">Siège de Paradis (Nord-Est)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- THE INFRASTRUCTURE CARDS SECTION -->
+    <section class="py-24 bg-gradient-to-b from-brand-dark to-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Wind Farms -->
+                <div class="bg-brand-card border border-slate-800/80 rounded-2xl overflow-hidden group hover:border-brand-500 transition-all flex flex-col justify-between">
+                    <div class="p-8 space-y-4">
+                        <div class="w-12 h-12 bg-teal-500/10 text-teal-400 rounded-xl flex items-center justify-center">
+                            <i data-lucide="wind" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-teal-400 transition-colors">Parcs Éoliens Technologiques de l'Est</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Situés sur les plateaux côtiers de l'Est de Skullaris, nos parcs exploitent les courants marins côtiers grâce à nos éoliennes intelligentes équipées de pales adaptatives de dernière génération.
+                        </p>
+                    </div>
+                    <div class="p-8 pt-0">
+                        <div class="border-t border-slate-800 pt-4 flex justify-between items-center text-xs">
+                            <span class="text-slate-500">Capacité nominale</span>
+                            <span class="font-bold text-white font-mono">1,600 MW</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Brain Island Dams -->
+                <div class="bg-brand-card border border-slate-800/80 rounded-2xl overflow-hidden group hover:border-blue-500 transition-all flex flex-col justify-between">
+                    <div class="p-8 space-y-4">
+                        <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-xl flex items-center justify-center">
+                            <i data-lucide="waves" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Barrages du Sud de Brain Island</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Tout au nord de Skullaris, l'île de Brain Island abrite de grands fleuves à fort débit. Notre complexe hydroélectrique au sud de l'île assure le socle de production (baseload) national.
+                        </p>
+                    </div>
+                    <div class="p-8 pt-0">
+                        <div class="border-t border-slate-800 pt-4 flex justify-between items-center text-xs">
+                            <span class="text-slate-500">Capacité nominale</span>
+                            <span class="font-bold text-white font-mono">2,800 MW</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: HQ Paradis -->
+                <div class="bg-brand-card border border-slate-800/80 rounded-2xl overflow-hidden group hover:border-yellow-500 transition-all flex flex-col justify-between">
+                    <div class="p-8 space-y-4">
+                        <div class="w-12 h-12 bg-yellow-500/10 text-yellow-400 rounded-xl flex items-center justify-center">
+                            <i data-lucide="building" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">Siège Social — Paradis</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            C'est à Paradis, capitale animée située au nord-est de Skullaris, que se trouvent le centre décisionnel, les ingénieurs d'exploitation et la direction commerciale de PARAD.
+                        </p>
+                    </div>
+                    <div class="p-8 pt-0">
+                        <div class="border-t border-slate-800 pt-4 flex justify-between items-center text-xs">
+                            <span class="text-slate-500">Effectifs</span>
+                            <span class="font-bold text-white">1,500 collaborateurs</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CARBON & USAGE CALCULATOR -->
+    <section id="eco" class="py-24 bg-slate-900/40 border-y border-slate-900">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-card border border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-xl pointer-events-none"></div>
+
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">CITOYENNETÉ ÉNERGÉTIQUE</span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white mt-2">Estimez votre consommation Skullarienne</h2>
+                    <p class="text-sm text-slate-400 mt-2">
+                        Utilisez notre simulateur pour calculer l'empreinte de votre foyer et les économies d'énergies recommandées par PARAD.
+                    </p>
+                </div>
+
+                <!-- Calculator Form UI -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Taille du foyer (Skullariens)</label>
+                            <select id="foyer-size" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500" onchange="calculateEco()">
+                                <option value="1">1 personne (Appartement Paradis)</option>
+                                <option value="2">2 personnes (Foyer classique)</option>
+                                <option value="4" selected>4 personnes ou plus (Maison familiale)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Type d'Équipement Principal</label>
+                            <select id="equipement-type" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500" onchange="calculateEco()">
+                                <option value="1">Standard (Chauffage urbain, électroménager A+)</option>
+                                <option value="1.5" selected>Élevé (Chauffage électrique classique, climatisation)</option>
+                                <option value="0.7">Éco-Responsable (Thermodynamique, domotique PARAD)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950/80 rounded-2xl p-6 border border-slate-800 text-center space-y-4">
+                        <span class="text-xs text-slate-500 uppercase tracking-wider">Consommation Estimée</span>
+                        <div class="text-4xl font-black text-white font-mono" id="conso-result">
+                            4,200 <span class="text-lg font-normal text-slate-400">kWh/an</span>
+                        </div>
+                        <div class="text-sm text-emerald-400 font-medium" id="co2-result">
+                            Seulement 50.4 kg de CO2/an grâce à la grille PARAD
+                        </div>
+                        <div class="text-[11px] text-slate-400 pt-2 border-t border-slate-900 leading-relaxed">
+                            💡 <b>Conseil PARAD :</b> Utilisez nos contrats "Heures Vertes" lors des pics de vent sur les parcs de l'Est pour économiser jusqu'à 20% sur votre facture à Paradis.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GEMINI CITIZEN ASSISTANT (VIRTUAL CHAT) -->
+    <section id="assistant" class="py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-bold uppercase tracking-wider mb-3">
+                    <i data-lucide="bot" class="w-4 h-4"></i> Gemini AI
+                </div>
+                <h2 class="text-3xl font-extrabold text-white">Assistant Citoyen de PARAD</h2>
+                <p class="text-slate-400 text-sm mt-2">
+                    Posez vos questions à notre intelligence artificielle sur les parcs éoliens, les barrages de Brain Island, ou la gestion globale du réseau électrique de Skullaris.
+                </p>
+            </div>
+
+            <!-- Chat interface box -->
+            <div class="bg-brand-card border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col h-[500px]">
+                
+                <!-- Chat Header -->
+                <div class="bg-slate-900/90 border-b border-slate-800/80 px-6 py-4 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-500 to-blue-600 flex items-center justify-center font-bold text-white shadow-md">
+                            💡
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Conseiller PARAD</h4>
+                            <p class="text-[11px] text-slate-400">Actif • Spécialiste Skullaris Grid</p>
+                        </div>
+                    </div>
+                    <span class="text-xs bg-brand-500/10 text-brand-400 font-mono px-2 py-1 rounded">V2.5 Flash</span>
+                </div>
+
+                <!-- Messages container -->
+                <div class="flex-1 overflow-y-auto p-6 space-y-4" id="chat-messages">
+                    <!-- Bot message -->
+                    <div class="flex gap-3 max-w-[85%]">
+                        <div class="w-8 h-8 rounded-full bg-slate-800 flex-shrink-0 flex items-center justify-center text-sm">🤖</div>
+                        <div class="bg-slate-900 rounded-2xl rounded-tl-none p-4 text-sm text-slate-300 leading-relaxed border border-slate-800/60">
+                            Bonjour ! Je suis l'assistant intelligent de PARAD. Comment puis-je vous aider au sujet de la production énergétique, de nos barrages du Sud de Brain Island ou des parcs éoliens de l'Est ?
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Prompts Buttons -->
+                <div class="px-6 py-2 bg-slate-900/40 border-t border-slate-950/60 flex flex-wrap gap-2">
+                    <button class="text-xs bg-slate-800/80 hover:bg-slate-800 text-slate-300 px-3 py-1.5 rounded-full transition-colors border border-slate-700/50" onclick="sendQuickPrompt('Parle-moi des parcs éoliens de l\'Est de Skullaris.')">
+                        🍃 Éolien de l'Est
+                    </button>
+                    <button class="text-xs bg-slate-800/80 hover:bg-slate-800 text-slate-300 px-3 py-1.5 rounded-full transition-colors border border-slate-700/50" onclick="sendQuickPrompt('Quels sont les détails du barrage au Sud de Brain Island ?')">
+                        🌊 Barrages du Nord (Brain Island)
+                    </button>
+                    <button class="text-xs bg-slate-800/80 hover:bg-slate-800 text-slate-300 px-3 py-1.5 rounded-full transition-colors border border-slate-700/50" onclick="sendQuickPrompt('Où se trouve votre siège social et comment vous contacter à Paradis ?')">
+                        🏢 Siège de Paradis
+                    </button>
+                </div>
+
+                <!-- Message input area -->
+                <form id="chat-form" class="border-t border-slate-800 p-4 bg-slate-950 flex gap-3" onsubmit="handleChatSubmit(event)">
+                    <input type="text" id="chat-input" placeholder="Posez votre question à PARAD..." class="flex-1 bg-slate-900 text-sm border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500 placeholder-slate-500" required>
+                    <button type="submit" class="px-5 py-3 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-bold transition-all flex items-center gap-2">
+                        <span>Envoyer</span>
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 text-slate-400 text-sm py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Branding column -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-blue-600 flex items-center justify-center glow-cyan">
+                            <span class="text-white font-extrabold text-sm tracking-wider">P</span>
+                        </div>
+                        <span class="text-lg font-bold tracking-widest text-white">PARAD</span>
+                    </div>
+                    <p class="text-xs text-slate-400">
+                        Entreprise énergétique principale de Skullaris. Elle produit, distribue et sécurise l'électricité pour tout le pays.
+                    </p>
+                </div>
+
+                <!-- Sites / Locations -->
+                <div>
+                    <h5 class="text-xs font-bold text-slate-200 uppercase tracking-widest mb-4">Infrastructures</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#map" class="hover:text-white transition-colors">Parcs Éoliens Est (WindTech)</a></li>
+                        <li><a href="#map" class="hover:text-white transition-colors">Barrage du Sud (Brain Island)</a></li>
+                        <li><a href="#map" class="hover:text-white transition-colors">Réseau Local de Paradis (Capitale)</a></li>
+                        <li><a href="#map" class="hover:text-white transition-colors">Centrale Solaire Méridionale</a></li>
+                    </ul>
+                </div>
+
+                <!-- Emergency Contact -->
+                <div>
+                    <h5 class="text-xs font-bold text-slate-200 uppercase tracking-widest mb-4">Urgence Grid Skullaris</h5>
+                    <p class="text-xs text-slate-400 mb-2">Un problème sur votre ligne à Paradis ou sur l'île ?</p>
+                    <p class="text-base font-extrabold text-brand-400 font-mono">0 800 PARAD (Grands Axes)</p>
+                    <p class="text-[10px] text-slate-500">Service gratuit et disponible 24/7 pour toute anomalie.</p>
+                </div>
+
+                <!-- Tech disclosure / Disclaimers -->
+                <div>
+                    <h5 class="text-xs font-bold text-slate-200 uppercase tracking-widest mb-4">À propos de ce portail</h5>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Ce site est le canal de communication officiel et hautement sécurisé de la société d'état <b>PARAD</b>.
+                    </p>
+                    <p class="text-[10px] text-slate-500 mt-2">
+                        © 2026 PARAD. Tous droits réservés. République de Skullaris.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Simulated Realtime Dashboard numbers
+        setInterval(() => {
+            // Live fluctuations for wind
+            const baseWind = 1250;
+            const fluctuationWind = Math.floor(Math.sin(Date.now() / 5000) * 80) + Math.floor(Math.random() * 30);
+            const totalWind = baseWind + fluctuationWind;
+
+            // Live fluctuations for hydro
+            const baseHydro = 2200;
+            const fluctuationHydro = Math.floor(Math.cos(Date.now() / 8000) * 40) + Math.floor(Math.random() * 15);
+            const totalHydro = baseHydro + fluctuationHydro;
+
+            const totalProd = totalWind + totalHydro + 400; // Adding minor solar or thermal
+            const totalCons = Math.floor(totalProd * 0.9) + Math.floor(Math.sin(Date.now() / 10000) * 50);
+
+            // Update DOM Elements
+            document.getElementById('dash-wind-val').textContent = `${totalWind.toLocaleString()} MW`;
+            document.getElementById('dash-hydro-val').textContent = `${totalHydro.toLocaleString()} MW`;
+            document.getElementById('production-val').textContent = `${totalProd.toLocaleString()} MW`;
+            document.getElementById('consommation-val').textContent = `${totalCons.toLocaleString()} MW`;
+            document.getElementById('eolien-stat').textContent = `${totalWind.toLocaleString()} MW`;
+            document.getElementById('hydro-stat').textContent = `${totalHydro.toLocaleString()} MW`;
+
+            // Adjust Bar Widths (max values for display are roughly 5000MW)
+            const prodPercent = Math.min((totalProd / 5000) * 100, 100);
+            const consPercent = Math.min((totalCons / 5000) * 100, 100);
+            document.getElementById('production-bar').style.width = `${prodPercent}%`;
+            document.getElementById('consommation-bar').style.width = `${consPercent}%`;
+
+            // Micro-fluctuations of Frequency
+            const freq = (50.0 + (Math.random() * 0.2 - 0.1)).toFixed(2);
+            document.getElementById('dash-freq-val').textContent = `${freq} Hz`;
+
+        }, 3000);
+
+        // Map Information DB
+        const mapLocations = {
+            'brain-island': {
+                title: 'Complexe Hydroélectrique de Brain Island',
+                tag: 'Énergie Hydraulique',
+                desc: 'Situé dans la partie sud de la grande île septentrionale de Skullaris. Ce complexe de barrages hydroélectriques de haute technologie utilise les débits torrentiels des montagnes de Brain Island pour alimenter de façon continue l\'ensemble de l\'industrie nationale.',
+                cap: '2,800 MW',
+                loc: 'Sud de l\'île de Brain Island, Extrême Nord de Skullaris'
+            },
+            'hq': {
+                title: 'Siège Mondial PARAD — Paradis',
+                tag: 'Centre Administratif & National',
+                desc: 'Le siège social de l\'entreprise PARAD est basé à Paradis, la capitale trépidante du pays située au Nord-Est de Skullaris. Ce complexe architectural durable abrite le centre de dispatching national qui orchestre l\'ensemble du flux électrique du territoire.',
+                cap: 'Centre Décisionnel (Dispatching)',
+                loc: 'Paradis (Nord-Est)'
+            },
+            'wind-east': {
+                title: 'Parcs Éoliens Technologiques de l\'Est',
+                tag: 'Énergie Éolienne Marine & Terrestre',
+                desc: 'Notre flotte d\'aérogénérateurs technologiques installée sur les plaines côtières exposées de l\'Est de Skullaris. Ces éoliennes connectées adaptent l\'angle de leurs pales en temps réel selon les flux d\'air pour produire une électricité décarbonée majeure.',
+                cap: '1,600 MW',
+                loc: 'Côte Est de Skullaris'
+            }
+        };
+
+        // Trigger map details on hover
+        function previewMapDetail(key) {
+            updateMapInfoBox(key);
+        }
+
+        // Trigger map details on click
+        function showMapDetail(key) {
+            updateMapInfoBox(key);
+            // Smoothly scroll to the information box on mobile devices
+            if (window.innerWidth < 1024) {
+                document.getElementById('map-info-box').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function updateMapInfoBox(key) {
+            const defaultState = document.getElementById('default-info');
+            const dynamicState = document.getElementById('dynamic-info');
+            const data = mapLocations[key];
+
+            if (data) {
+                defaultState.classList.add('hidden');
+                dynamicState.classList.remove('hidden');
+
+                document.getElementById('info-title').textContent = data.title;
+                document.getElementById('info-tag').textContent = data.tag;
+                document.getElementById('info-desc').textContent = data.desc;
+                document.getElementById('info-cap').textContent = data.cap;
+                document.getElementById('info-loc').textContent = data.loc;
+            }
+        }
+
+        // Calculator Logic
+        function calculateEco() {
+            const size = parseFloat(document.getElementById('foyer-size').value);
+            const equip = parseFloat(document.getElementById('equipement-type').value);
+
+            // Calculation math
+            const baseConso = 1200; // kWh per person
+            const calculatedConso = Math.round(size * baseConso * equip);
+            const co2 = Math.round(calculatedConso * 0.012); // 12g Co2 per KWh
+
+            document.getElementById('conso-result').innerHTML = `${calculatedConso.toLocaleString()} <span class="text-lg font-normal text-slate-400">kWh/an</span>`;
+            document.getElementById('co2-result').textContent = `Seulement ${co2} kg de CO2/an grâce au mix décarboné de PARAD`;
+        }
+
+        // GEMINI API CONSOLE CONFIG (Mandatory Rules Integration)
+        const apiKey = ""; // Left empty as required by the instruction
+        const modelName = "gemini-2.5-flash-preview-09-2025";
+
+        const systemPrompt = `Tu es l'assistant d'aide citoyenne officiel de PARAD, l'entreprise énergétique majeure de Skullaris.
+Voici les informations clés sur notre entreprise :
+1. Nous gérons toute la distribution électrique et la production d'énergie de Skullaris. Nous sommes un pilier essentiel de l'économie nationale.
+2. Nous possédons des barrages et des installations énergétiques (centrales) sur le Sud de "Brain Island" tout au nord de Skullaris.
+3. Nous avons des parcs éoliens technologiques de haute facture énergétique dans l'Est du pays.
+4. Notre siège social est situé à Paradis, la capitale de Skullaris au Nord-Est du pays.
+Tu dois répondre aux citoyens de manière concise, chaleureuse et professionnelle. Tu es un représentant de la compagnie. Réponds toujours en restant dans l'univers immersif de Skullaris et de PARAD (ne précise pas que c'est fictif).`;
+
+        async function fetchGeminiResponse(userMessage) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{
+                    parts: [{ text: userMessage }]
+                }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                }
+            };
+
+            let delay = 1000;
+            for (let i = 0; i < 5; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (response.ok) {
+                        const data = await response.json();
+                        return data.candidates?.[0]?.content?.parts?.[0]?.text || "Je n'ai pas pu obtenir de réponse de nos serveurs centraux.";
+                    }
+                } catch (err) {
+                    // Retry with exponential backoff
+                }
+                await new Promise(resolve => setTimeout(resolve, delay));
+                delay *= 2;
+            }
+            throw new Error("Impossible de joindre le système central de PARAD.");
+        }
+
+        // Local Fallback simulation if the API feels a bit lonely or key is empty
+        function getLocalSimulationResponse(msg) {
+            const lower = msg.toLowerCase();
+            if (lower.includes('vent') || lower.includes('éolien') || lower.includes('est')) {
+                return "💨 Les parcs éoliens de l'Est sont équipés de nos turbines brevetées WindTech. Ils couvrent environ 35% de la demande nationale lors des brises marines côtières soutenues de Skullaris. Notre centre opérationnel à Paradis surveille attentivement ces fluctuations.";
+            }
+            if (lower.includes('barrage') || lower.includes('brain') || lower.includes('hydro') || lower.includes('nord')) {
+                return "🌊 Le complexe hydroélectrique au sud de Brain Island (dans le grand nord du pays) est notre joyau d'ingénierie. Profitant des pentes abruptes de l'île, il produit 2 800 MW en continu. C'est l'épine dorsale de l'industrie énergétique de Skullaris !";
+            }
+            if (lower.includes('siège') || lower.includes('paradis') || lower.includes('capitale') || lower.includes('adresse')) {
+                return "🏢 Le siège social de PARAD est implanté à Paradis, la capitale énergétique au Nord-Est du pays. C'est de là que nos ingénieurs supervisent la sécurité et la stabilité de toute l'énergie fournie à Skullaris.";
+            }
+            if (lower.includes('facture') || lower.includes('payer') || lower.includes('consom')) {
+                return "💡 Pour réduire votre facture, vous pouvez adopter notre contrat d'heures intelligentes. Il adapte automatiquement votre tarif en fonction des prévisions d'apport des éoliennes de l'Est ! Utilisez également notre simulateur sur le site.";
+            }
+            return "⚡ Merci pour votre message. PARAD s'engage à vous fournir une électricité décarbonée, stable et accessible sur l'ensemble de Skullaris. Si vous souhaitez des informations précises sur nos barrages à Brain Island, nos parcs éoliens de l'Est ou notre direction à Paradis, n'hésitez pas !";
+        }
+
+        // Chat Interface Management
+        const chatMessages = document.getElementById('chat-messages');
+
+        function appendMessage(text, isUser = false) {
+            const wrapper = document.createElement('div');
+            wrapper.className = `flex gap-3 max-w-[85%] ${isUser ? 'ml-auto flex-row-reverse' : ''}`;
+            
+            const avatar = document.createElement('div');
+            avatar.className = `w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-sm ${isUser ? 'bg-brand-600' : 'bg-slate-800'}`;
+            avatar.textContent = isUser ? "👤" : "🤖";
+
+            const bubble = document.createElement('div');
+            bubble.className = `p-4 text-sm rounded-2xl leading-relaxed border ${
+                isUser 
+                ? 'bg-gradient-to-r from-brand-600 to-brand-500 text-white rounded-tr-none border-brand-500' 
+                : 'bg-slate-900 text-slate-300 rounded-tl-none border-slate-800/60'
+            }`;
+            bubble.textContent = text;
+
+            wrapper.appendChild(avatar);
+            wrapper.appendChild(bubble);
+            chatMessages.appendChild(wrapper);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        async function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (!message) return;
+
+            appendMessage(message, true);
+            input.value = "";
+
+            // Show loading placeholder
+            const loadingBubble = document.createElement('div');
+            loadingBubble.className = 'flex gap-3 max-w-[85%] items-center text-xs text-slate-500 animate-pulse';
+            loadingBubble.id = 'chat-loading';
+            loadingBubble.innerHTML = `<span>⚡ Connexion au réseau neuronal PARAD...</span>`;
+            chatMessages.appendChild(loadingBubble);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {
+                let reply;
+                if (apiKey) {
+                    reply = await fetchGeminiResponse(message);
+                } else {
+                    // Simulate artificial latency for realistic feeling
+                    await new Promise(resolve => setTimeout(resolve, 800));
+                    reply = getLocalSimulationResponse(message);
+                }
+                document.getElementById('chat-loading').remove();
+                appendMessage(reply, false);
+            } catch (err) {
+                document.getElementById('chat-loading').remove();
+                // In case of error, default to local backup
+                const backupReply = getLocalSimulationResponse(message);
+                appendMessage(backupReply, false);
+            }
+        }
+
+        function sendQuickPrompt(promptText) {
+            document.getElementById('chat-input').value = promptText;
+            document.getElementById('chat-form').dispatchEvent(new Event('submit'));
+        }
+    </script>
+</body>
+</html>
